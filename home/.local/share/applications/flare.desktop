@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Flare
+Comment=Raycast-compatible launcher for Linux
+Exec=/home/eyeriis/.local/bin/flare
+Terminal=false
+Categories=Utility;

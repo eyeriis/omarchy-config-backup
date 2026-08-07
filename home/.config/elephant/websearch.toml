@@ -1,0 +1,23 @@
+always_show_default = false
+command = 'xdg-open'
+engines_as_actions = false
+[[entries]]
+name = "Search"
+default = true
+prefix = "s"
+url = "https://www.google.com/search?q=%TERM%"
+
+[[entries]]
+name = "YouTube"
+default = false
+prefix = "y"
+url = "https://www.youtube.com/results?search_query=%TERM%"
+history = true
+history_when_empty = false
+text_prefix = 'Search: '
+
+[Config]
+hide_from_providerlist = false
+icon = 'applications-internet'
+min_score = 20
+name_pretty = ''

@@ -1,0 +1,9 @@
+[Unit]
+Description=Auto-set Bluetooth headset as default sink
+After=pipewire.service
+
+[Service]
+ExecStart=%h/.local/bin/bt-auto-default.sh
+
+[Install]
+WantedBy=default.target

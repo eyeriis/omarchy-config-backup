@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Changelog
+Exec=env "WINEPREFIX=/home/eyeriis/.wine" wine "C:\\\\ProgramData\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\DVD Flick\\\\Help and Support\\\\Changelog.lnk"
+Type=Application
+StartupNotify=true
+Comment=Changelog
+Path=/home/eyeriis/.wine/drive_c/Program Files (x86)/DVD Flick
+Icon=2BBB_changelog.0
+StartupWMClass=changelog.txt

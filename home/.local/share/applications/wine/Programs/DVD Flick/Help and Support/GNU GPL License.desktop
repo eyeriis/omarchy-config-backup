@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GNU GPL License
+Exec=env "WINEPREFIX=/home/eyeriis/.wine" wine "C:\\\\ProgramData\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\DVD Flick\\\\Help and Support\\\\GNU GPL License.lnk"
+Type=Application
+StartupNotify=true
+Comment=GNU GPL License
+Path=/home/eyeriis/.wine/drive_c/Program Files (x86)/DVD Flick
+Icon=15E4_license.0
+StartupWMClass=license.txt

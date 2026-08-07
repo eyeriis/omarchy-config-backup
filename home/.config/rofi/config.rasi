@@ -1,0 +1,18 @@
+* {
+    background: #1e1e1e;
+    foreground: #ffffff;
+    border: 1px;
+border-color: #3c3c3c;
+
+    selected-background: #3c3c3c;
+    selected-foreground: #ffffff;
+    element-border: 0px;
+    padding: 5px;
+    font: "monospace 12";
+}
+window {
+    background-color: #1e1e1e;
+    border-radius: 12px;
+}
+
+

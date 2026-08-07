@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Guide
+Exec=env "WINEPREFIX=/home/eyeriis/.wine" wine "C:\\\\ProgramData\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\DVD Flick\\\\Help and Support\\\\Guide.lnk"
+Type=Application
+StartupNotify=true
+Comment=Guide
+Path=/home/eyeriis/.wine/drive_c/Program Files (x86)/DVD Flick/guide
+StartupWMClass=index_en.html

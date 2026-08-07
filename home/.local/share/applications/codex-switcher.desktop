@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Codex Switcher
+Comment=A multi-account manager for Codex CLI
+Exec=/home/eyeriis/.local/bin/codex-switcher
+Icon=codex-switcher
+Type=Application
+Categories=Development;Utility;
+Terminal=false
+StartupWMClass=codex-switcher

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=FormatPlayer
+MimeType=application/x-wine-extension-264;
+Exec=env "WINEPREFIX=/home/eyeriis/.wine" wine start /ProgIDOpen "FormatPlayer.264" %f
+NoDisplay=true
+StartupNotify=true
+Icon=3FA5_FormatPlayer.0

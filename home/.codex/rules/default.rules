@@ -1,0 +1,6 @@
+prefix_rule(pattern=["npm", "run", "build"], decision="allow")
+prefix_rule(pattern=["curl"], decision="allow")
+prefix_rule(pattern=["ss", "-ltnp", "sport", "=", ":18080"], decision="allow")
+prefix_rule(pattern=["/bin/zsh", "-lc", "DATABASE_URL='postgres://gobaghdad_local:local_dev_password_not_for_production@localhost:5432/gobaghdad_admin_preview_20260618_160259?sslmode=disable' API_PORT=18080 /home/eyeriis/docs/server/run_api.sh"], decision="allow")
+prefix_rule(pattern=["./node_modules/.bin/vite", "--host", "127.0.0.1", "--port"], decision="allow")
+prefix_rule(pattern=["/bin/zsh", "-lc", "VITE_DEV_ADMIN_JWT='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZW1haWwiOiJkZXZAYWRtaW4uY29tIiwiZXhwIjoxNzgxOTgxNjk4LCJpc3MiOiJodHRwczovL2xvY2FsLWRldi5zdXBhYmFzZS5pbnZhbGlkL2F1dGgvdjEiLCJyb2xlIjoiYWRtaW4iLCJzdWIiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAifQ.suFNFcs2qFQ0d2tzqs5jMXTnuT-mAH5Snf1HwYhkdzM' ./node_modules/.bin/vite --host 127.0.0.1 --port 8081"], decision="allow")

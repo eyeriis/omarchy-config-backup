@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=DVD Flick
+Exec=env "WINEPREFIX=/home/eyeriis/.wine" wine "C:\\\\ProgramData\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\DVD Flick\\\\DVD Flick.lnk"
+Type=Application
+StartupNotify=true
+Comment=DVD Flick
+Path=/home/eyeriis/.wine/drive_c/Program Files (x86)/DVD Flick
+Icon=22A8_dvdflick.0
+StartupWMClass=dvdflick.exe

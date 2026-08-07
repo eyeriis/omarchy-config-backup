@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Format Factory
+Exec=env "WINEPREFIX=/home/eyeriis/.wine" wine "C:\\\\users\\\\eyeriis\\\\AppData\\\\Roaming\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\Format Factory\\\\Format Factory.lnk"
+Type=Application
+StartupNotify=true
+Path=/home/eyeriis/.wine/drive_c/Program Files/
+Icon=F557_FormatFactory.0
+StartupWMClass=formatfactory.exe

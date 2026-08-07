@@ -1,0 +1,119 @@
+#!/bin/bash
+# Fixed OpenCode Account Switcher
+
+DIR="$HOME/.local/share/opencode/accounts_backup"
+FILE="$HOME/.local/share/opencode/auth.json"
+
+mkdir -p "$DIR"
+
+# Helper function to extract email from the OpenAI JWT token
+get_email() {
+    local target_file="$1"
+    if [ ! -f "$target_file" ]; then
+        echo "None"
+        return
+    fi
+    python3 -c "
+import sys, json, base64
+try:
+    with open('$target_file', 'r') as f:
+        data = json.load(f)
+        token = data.get('openai', {}).get('access', '')
+        if token:
+            payload = token.split('.')[1]
+            payload += '=' * ((4 - len(payload) % 4) % 4)
+            decoded = json.loads(base64.urlsafe_b64decode(payload))
+            print(decoded.get('https://api.openai.com/profile', {}).get('email', 'Unknown Email'))
+        else:
+            print('No OpenAI account logged in')
+except Exception as e:
+    print('Unknown Email')
+" 2>/dev/null
+}
+
+if [ -z "$1" ]; then
+    echo "========================================="
+    echo " 🔄 OpenCode Account Switcher"
+    echo "========================================="
+    echo " Usage:"
+    echo "   oc-switch save <name>  - Save current login profile"
+    echo "   oc-switch use <name>   - Switch to a saved profile"
+    echo "   oc-switch list         - View all saved profiles"
+    echo "-----------------------------------------"
+    CURRENT_EMAIL=$(get_email "$FILE")
+    echo " 👉 Currently active :  $CURRENT_EMAIL"
+    echo "========================================="
+    exit 0
+fi
+
+if [ "$1" == "save" ]; then
+    if [ -z "$2" ]; then
+        echo "❌ Please provide a name. Example: oc-switch save account1"
+        exit 1
+    fi
+    if [ ! -f "$FILE" ]; then
+        echo "❌ No active OpenCode session found."
+        exit 1
+    fi
+    cp "$FILE" "$DIR/$2.json"
+    EMAIL=$(get_email "$DIR/$2.json")
+    echo "✅ Saved current session as profile: [$2]"
+    echo "   Email attached: $EMAIL"
+    exit 0
+fi
+
+if [ "$1" == "list" ]; then
+    echo "========================================="
+    echo " 📂 Saved OpenAI Profiles"
+    echo "========================================="
+    count=0
+    CURRENT_ACTIVE=$(get_email "$FILE")
+    
+    for f in "$DIR"/*.json; do
+        if [ -f "$f" ]; then
+            name=$(basename "$f" .json)
+            email=$(get_email "$f")
+            
+            if [ "$email" == "$CURRENT_ACTIVE" ]; then
+                status="[ACTIVE] "
+                color="\e[32m" # Green
+            else
+                status="[STANDBY]"
+                color="\e[33m" # Yellow
+            fi
+            reset="\e[0m"
+            
+            printf " %b%s%b | %-10s | %s\n" "$color" "$status" "$reset" "$name" "$email"
+            echo "-----------------------------------------"
+            count=$((count + 1))
+        fi
+    done
+    if [ "$count" -eq 0 ]; then
+        echo " No profiles saved yet. Use 'oc-switch save <name>' first."
+    fi
+    echo "========================================="
+    exit 0
+fi
+
+if [ "$1" == "use" ]; then
+    if [ -z "$2" ]; then
+        echo "❌ Please provide a name. Example: oc-switch use account1"
+        exit 1
+    fi
+    if [ ! -f "$DIR/$2.json" ]; then
+        echo "❌ Profile '$2' not found. Run 'oc-switch list' to see available profiles."
+        exit 1
+    fi
+    cp "$DIR/$2.json" "$FILE"
+    EMAIL=$(get_email "$FILE")
+    echo "========================================="
+    echo " 🔄 Success! Switched Profile"
+    echo "========================================="
+    echo " 👉 Now using   : [$2]"
+    echo " 👉 OpenAI Email: $EMAIL"
+    echo "========================================="
+    exit 0
+fi
+
+echo "❌ Unknown command. Run 'oc-switch' to see usage instructions."
+exit 1

@@ -1,0 +1,51 @@
+# Application bindings
+bindd = SUPER ALT, RETURN, Tmux, exec, uwsm-app -- xdg-terminal-exec --dir="$(omarchy-cmd-terminal-cwd)" tmux new
+$terminal = uwsm app -- $TERMINAL
+$browser = omarchy-launch-browser
+
+bindd = SUPER, RETURN, Terminal, exec, $terminal --dir="$(omarchy-cmd-terminal-cwd)"
+bindd = SUPER SHIFT, RETURN, Browser, exec, omarchy-launch-browser
+#bindd = SUPER SHIFT, F, file manager, exec, alacritty -e ranger
+#bindd = SUPER SHIFT, F, file manager, exec, alacritty -e ranger
+bindd = SUPER SHIFT, F, file manager, exec, nautilus
+bindd = SUPER , B, Browser, exec,  $browser
+bindd = SUPER  ALT, B, Browser (private), exec, $browser --private
+bindd = SUPER , M, Music, exec, omarchy-launch-or-focus spotify
+bindd = SUPER , N, Editor, exec, omarchy-launch-editor
+bindd = SUPER SHIFT, T, Activity, exec, omarchy-launch-tui btop
+#bindd = SUPER , S, screenshot, exec, hyprshot -m region --clipboard-only
+#bindd = SUPER SHIFT, D, Docker, exec, omarchy-launch-tui lazydocker
+bindd = SUPER SHIFT, D, Ayugram, exec, AyuGram
+bindd = SUPER SHIFT, G, Signal, exec, omarchy-launch-or-focus signal "uwsm app -- signal-desktop"
+bindd = SUPER , Q, Obsidian, exec, omarchy-launch-or-focus obsidian "uwsm-app -- obsidian"
+bindd = SUPER SHIFT, slash, Passwords, exec, uwsm app -- 1password
+# VSCode keybinding
+bindd = SUPER , X, vscode, exec, code
+bindd = SUPER , I, networkmanager, exec, alacritty -e nmtui
+# If your web app url contains #, type it as ## to prevent hyperland treat it as comments
+bindd = SUPER , A, Stremio, exec, flatpak run com.stremio.Stremio
+
+bindd = SUPER SHIFT ALT, A, Grok, exec, omarchy-launch-webapp "https://grok.com"
+bindd = SUPER SHIFT CTRL, A, opencode, exec, omarchy-launch-opencode
+bindd = SUPER SHIFT, S, opencode CLI, exec, uwsm app -- $terminal -e opencode
+bindd = SUPER , D, telegram, exec, Telegram
+bindd = SUPER , E, KDEN, exec, kdenlive
+bindd = SUPER SHIFT, Y, YouTube, exec, omarchy-launch-or-focus-webapp YouTube "https://youtube.com/"
+bindd = SUPER SHIFT ALT, G, WhatsApp, exec, omarchy-launch-or-focus-webapp WhatsApp "https://web.whatsapp.com/"
+bindd = SUPER SHIFT CTRL, G, Google Messages, exec, omarchy-launch-or-focus-webapp "Google Messages" "https://messages.google.com/web/conversations"
+#bindd = SUPER SHIFT, X, X, exec, omarchy-launch-webapp "https://x.com/"
+bindd = SUPER SHIFT ALT, X, X Post, exec, omarchy-launch-webapp "https://x.com/compose/post"
+
+# Overwrite existing bindings, like putting Omarchy Menu on Super + Space
+# unbind = SUPER SHIFT, SPACE
+# bindd = SUPER SHIFT, SPACE, Omarchy menu, exec, omarchy-menu
+
+# Fix mic mute and show OSD notification
+unbind = ,XF86AudioMicMute
+bindeld = ,XF86AudioMicMute, Mute microphone, exec, mic-mute-toggle
+
+# --- Lid Switch Behavior (Focus Mode Support) ---
+# When lid is closed (switch turns on), turn off laptop screen.
+# When lid is opened (switch turns off), turn on laptop screen.
+bindl = , switch:on:Lid Switch, exec, hyprctl dispatch dpms off eDP-1
+bindl = , switch:off:Lid Switch, exec, hyprctl dispatch dpms on eDP-1

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=SQL Server Installation Center
+Exec=env "WINEPREFIX=/home/eyeriis/.wine" wine "C:\\\\users\\\\eyeriis\\\\AppData\\\\Roaming\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\Microsoft SQL Server 2008 R2\\\\Configuration Tools\\\\SQL Server Installation Center.lnk"
+Type=Application
+StartupNotify=true
+Icon=3E5F_LandingPage.0
+StartupWMClass=landingpage.exe

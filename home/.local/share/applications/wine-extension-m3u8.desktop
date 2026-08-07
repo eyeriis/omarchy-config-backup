@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=FormatPlayer
+MimeType=audio/x-mpegurl;
+Exec=env "WINEPREFIX=/home/eyeriis/.wine" wine start /ProgIDOpen "FormatPlayer.m3u8" %f
+NoDisplay=true
+StartupNotify=true
+Icon=3FA5_FormatPlayer.0

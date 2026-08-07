@@ -1,0 +1,159 @@
+@define-color text #cdd6f4;
+@define-color base #1a1b1e;
+@define-color border #ffffff55;
+@define-color foreground #eaeaef;
+@define-color background #1a1b1e;
+@define-color hover #2a2b2e;
+@define-color accent #f0f0f0;
+
+* {
+  all: unset;
+}
+
+* {
+  font-family: monospace;
+  font-size: 18px;
+  color: @text;
+}
+
+scrollbar {
+  opacity: 0;
+}
+
+.normal-icons {
+  -gtk-icon-size: 16px;
+}
+
+.large-icons {
+  -gtk-icon-size: 32px;
+}
+
+.box-wrapper {
+  background: alpha(@base, 0.2);
+  padding: 20px;
+  border: 1px solid @border;
+  border-radius: 8px;
+}
+
+.preview-box {
+}
+
+.box {
+}
+
+window .search,
+window .search-container {
+  background: transparent;
+  border-radius: 8px;
+  border: 1px solid alpha(@border, 0.5);
+  color: @foreground;
+  padding: 8px 12px;
+  margin: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.input placeholder {
+  opacity: 0.5;
+}
+
+.input {
+}
+
+.input:focus,
+.input:active {
+  box-shadow: none;
+  outline: none;
+}
+
+.content-container {
+}
+
+.placeholder {
+}
+
+.scroll {
+}
+
+.list {
+}
+
+.list child {
+  animation: slideIn 180ms ease-out forwards;
+}
+
+child,
+child > * {
+}
+
+child:hover .item-box {
+}
+
+child:selected .item-box {
+  background: linear-gradient(90deg, alpha(@accent, 0.2), transparent 100%);
+  transform: translateX(4px);
+}
+
+child:selected .item-box * {
+  color: @foreground;
+}
+
+.item-box {
+  padding-left: 14px;
+  border-radius: 8px;
+  background: transparent;
+  transition:
+    background 150ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    border-left 150ms ease,
+    transform 150ms ease;
+}
+
+.item-text-box {
+  all: unset;
+  padding: 14px 0;
+}
+
+.item-text {
+}
+
+.item-subtext {
+  font-size: 0px;
+  min-height: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.item-image {
+  margin-right: 14px;
+  -gtk-icon-transform: scale(0.9);
+}
+
+.item-quick-activation {
+  font-size: 12px;
+  color: alpha(@text, 0.15);
+  margin-right: 2rem;
+}
+
+.current {
+  font-style: italic;
+}
+
+.keybind-hints {
+  background: @background;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.preview {
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-15px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

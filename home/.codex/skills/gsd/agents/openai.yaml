@@ -1,0 +1,4 @@
+interface:
+  display_name: "GSD"
+  short_description: "Move from ambiguity to concrete progress."
+  default_prompt: "Get shit done on this task."

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=OpenCode
+Comment=The open source AI coding agent
+Exec=/usr/bin/opencode-desktop
+TryExec=/usr/bin/opencode-desktop
+Icon=OpenCode
+Terminal=false
+StartupWMClass=OpenCode
+Categories=Development;Utility;
+MimeType=x-scheme-handler/opencode;

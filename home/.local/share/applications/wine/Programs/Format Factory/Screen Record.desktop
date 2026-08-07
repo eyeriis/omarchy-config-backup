@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Screen Record
+Exec=env "WINEPREFIX=/home/eyeriis/.wine" wine "C:\\\\users\\\\eyeriis\\\\AppData\\\\Roaming\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\Format Factory\\\\Screen Record.lnk"
+Type=Application
+StartupNotify=true
+Path=/home/eyeriis/.wine/drive_c/Program Files/
+Icon=D400_QRecord.0
+StartupWMClass=qrecord.exe

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Uninstall Format Factory
+Exec=env "WINEPREFIX=/home/eyeriis/.wine" wine "C:\\\\users\\\\eyeriis\\\\AppData\\\\Roaming\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\Format Factory\\\\Uninstall Format Factory.lnk"
+Type=Application
+StartupNotify=true
+Icon=56E3_SystemFoldermsiexec.0
+StartupWMClass=msiexec.exe

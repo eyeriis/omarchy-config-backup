@@ -1,0 +1,8 @@
+[
+  {
+    "key": "f5",
+    "command": "workbench.action.tasks.runTask",
+    "args": "C++: Run active file in external terminal",
+    "when": "editorTextFocus && editorLangId == cpp"
+  }
+]

@@ -1,0 +1,24 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+"http://www.freedesktop.org/standards/menu-spec/menu-1.0.dtd">
+<Menu>
+  <Name>Applications</Name>
+  <Menu>
+    <Name>wine-wine</Name>
+    <Directory>wine-wine.directory</Directory>
+  <Menu>
+    <Name>wine-Programs</Name>
+    <Directory>wine-Programs.directory</Directory>
+  <Menu>
+    <Name>wine-Programs-Wondershare</Name>
+    <Directory>wine-Programs-Wondershare.directory</Directory>
+  <Menu>
+    <Name>wine-Programs-Wondershare-DVD Creator</Name>
+    <Directory>wine-Programs-Wondershare-DVD Creator.directory</Directory>
+    <Include>
+      <Filename>wine-Programs-Wondershare-DVD Creator-Wondershare DVD Creator.desktop</Filename>
+    </Include>
+  </Menu>
+  </Menu>
+  </Menu>
+  </Menu>
+</Menu>

@@ -1,0 +1,47 @@
+#!/bin/bash
+# Omarchy Focus Mode Toggle
+# Keeps the laptop running when the lid is closed.
+
+FLAG_DIR="$HOME/.config/omarchy/flags"
+STATE_FILE="$FLAG_DIR/focus-mode"
+
+mkdir -p "$FLAG_DIR"
+
+# Check if we have sudo privileges without hanging
+sudo -v -n 2>/dev/null
+if [ $? -ne 0 ]; then
+    echo "Focus Mode requires sudo to change system power settings."
+    sudo -v
+fi
+
+if [ "$1" == "status" ]; then
+    if [ -f "$STATE_FILE" ]; then
+        echo '{"text": "🎯 Focus", "class": "active", "tooltip": "Focus Mode: ON (Lid close ignores sleep)"}'
+    else
+        echo '{"text": "☕ Normal", "class": "inactive", "tooltip": "Focus Mode: OFF (Lid close suspends)"}'
+    fi
+    exit 0
+fi
+
+if [ -f "$STATE_FILE" ]; then
+    # Disable Focus Mode
+    echo "Turning OFF Focus Mode..."
+    sudo rm -f /etc/systemd/logind.conf.d/99-focus-mode.conf
+    sudo systemctl reload systemd-logind
+    rm -f "$STATE_FILE"
+    
+    # Send notification via Mako
+    notify-send -a "Omarchy Power" "☕ Focus Mode: OFF" "Lid close will now Suspend normally." -u normal
+    echo "✅ Focus Mode disabled."
+else
+    # Enable Focus Mode
+    echo "Turning ON Focus Mode..."
+    sudo mkdir -p /etc/systemd/logind.conf.d/
+    echo -e "[Login]\nHandleLidSwitch=ignore\nHandleLidSwitchExternalPower=ignore" | sudo tee /etc/systemd/logind.conf.d/99-focus-mode.conf > /dev/null
+    sudo systemctl reload systemd-logind
+    touch "$STATE_FILE"
+    
+    # Send notification via Mako
+    notify-send -a "Omarchy Power" "🎯 Focus Mode: ON" "Lid close will turn off screen but KEEP coding session running." -u critical
+    echo "✅ Focus Mode enabled!"
+fi

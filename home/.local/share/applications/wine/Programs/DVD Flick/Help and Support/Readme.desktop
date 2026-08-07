@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Readme
+Exec=env "WINEPREFIX=/home/eyeriis/.wine" wine "C:\\\\ProgramData\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\DVD Flick\\\\Help and Support\\\\Readme.lnk"
+Type=Application
+StartupNotify=true
+Comment=Readme
+Path=/home/eyeriis/.wine/drive_c/Program Files (x86)/DVD Flick
+Icon=9AB8_readme.0
+StartupWMClass=readme.txt

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+for candidate in /sys/class/power_supply/BAT*; do
+  [[ -r "$candidate/capacity" ]] && battery="$candidate" && break
+done
+[[ -n "$battery" ]] || exit 1
+
+read -r capacity < "$battery/capacity"
+read -r status < "$battery/status"
+[[ "$capacity" =~ ^[0-9]+$ ]] || exit 1
+
+theme_css="$HOME/.config/omarchy/current/theme/waybar.css"
+foreground="$(sed -n 's/^[[:space:]]*@define-color[[:space:]]\+foreground[[:space:]]\+\(#[[:xdigit:]]\{6\}\).*/\1/p' "$theme_css" | head -n 1)"
+background="$(sed -n 's/^[[:space:]]*@define-color[[:space:]]\+background[[:space:]]\+\(#[[:xdigit:]]\{6\}\).*/\1/p' "$theme_css" | head -n 1)"
+[[ "$foreground" =~ ^#[[:xdigit:]]{6}$ ]] || foreground="#f5f5f7"
+[[ "$background" =~ ^#[[:xdigit:]]{6}$ ]] || background="#111113"
+
+label="$capacity"
+text_x="19"
+bolt_light=""
+bolt_dark=""
+if [[ "$status" == "Charging" ]]; then
+  text_x="15.5"
+  bolt_light="<path d='M26.5 6 23.8 11h2.4l-1.3 5 5-6.2h-2.5l1.3-3.8z' fill='$foreground'/>"
+  bolt_dark="<path d='M26.5 6 23.8 11h2.4l-1.3 5 5-6.2h-2.5l1.3-3.8z' fill='$background' clip-path='url(#charged)'/>"
+fi
+fill_width=$((36 * capacity / 100))
+output="/tmp/waybar-macos-battery-$UID.svg"
+
+printf '<svg xmlns="http://www.w3.org/2000/svg" width="42" height="24" viewBox="0 0 42 24"><defs><clipPath id="body"><rect x="1" y="3" width="36" height="18" rx="4"/></clipPath><clipPath id="charged"><rect x="1" y="3" width="%s" height="18"/></clipPath></defs><rect x="1" y="3" width="36" height="18" rx="4" fill="%s" fill-opacity=".34"/><rect x="1" y="3" width="%s" height="18" fill="%s" clip-path="url(#body)"/><rect x="38" y="8" width="3" height="8" rx="1.5" fill="%s" fill-opacity=".62"/><text x="%s" y="12.4" text-anchor="middle" dominant-baseline="middle" font-family="Liberation Sans,sans-serif" font-size="12.8" font-weight="700" letter-spacing="-0.6" fill="%s">%s</text>%s<text x="%s" y="12.4" text-anchor="middle" dominant-baseline="middle" font-family="Liberation Sans,sans-serif" font-size="12.8" font-weight="700" letter-spacing="-0.6" fill="%s" clip-path="url(#charged)">%s</text>%s</svg>\n' "$fill_width" "$foreground" "$fill_width" "$foreground" "$foreground" "$text_x" "$foreground" "$label" "$bolt_light" "$text_x" "$background" "$label" "$bolt_dark" > "$output"
+printf '%s\n%s%% · %s\n' "$output" "$capacity" "$status"

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=FormatPlayer
+MimeType=video/x-ms-wmv;
+Exec=env "WINEPREFIX=/home/eyeriis/.wine" wine start /ProgIDOpen "FormatPlayer.wmv" %f
+NoDisplay=true
+StartupNotify=true
+Icon=3FA5_FormatPlayer.0

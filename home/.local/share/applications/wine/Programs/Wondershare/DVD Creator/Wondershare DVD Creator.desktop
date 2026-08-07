@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Wondershare DVD Creator
+Exec=env "WINEPREFIX=/home/eyeriis/.wine" wine "C:\\\\ProgramData\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\Wondershare\\\\DVD Creator\\\\Wondershare DVD Creator.lnk"
+Type=Application
+StartupNotify=true
+Path=/home/eyeriis/.wine/drive_c/Program Files (x86)/Wondershare/Wondershare DVD Creator
+Icon=5C74_DVDCreator.0
+StartupWMClass=dvdcreator.exe

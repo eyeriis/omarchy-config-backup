@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=FormatPlayer
+MimeType=video/vnd.avi;
+Exec=env "WINEPREFIX=/home/eyeriis/.wine" wine start /ProgIDOpen "FormatPlayer.avi" %f
+NoDisplay=true
+StartupNotify=true
+Icon=3FA5_FormatPlayer.0

@@ -1,0 +1,27 @@
+# Never commit credentials or private keys.
+**/auth.json
+**/*credential*
+**/*secret*
+**/*token*
+**/*.key
+**/*.pem
+**/*.p12
+**/*.pfx
+**/.git/
+
+# Never commit account/session/browser state.
+**/Cookies*
+**/Login Data*
+**/keyring*
+**/*history*
+**/*.sqlite*
+**/*.db
+**/*.log
+
+# Known local secrets/licenses.
+home/.config/environment.d/opencode.conf
+home/.config/gh/
+home/.config/REAPER/reaper-reginfo2.ini
+home/.git-credentials
+home/.ssh/
+home/.gnupg/

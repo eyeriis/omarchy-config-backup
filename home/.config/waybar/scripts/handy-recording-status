@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if pw-dump 2>/dev/null | jq -e '
+  any(.[ ];
+    .type == "PipeWire:Interface:Node" and
+    .info.props["media.class"] == "Stream/Input/Audio" and
+    .info.props["node.name"] == "alsa_capture.handy" and
+    .info.state == "running"
+  )
+' >/dev/null; then
+  printf '{"text":"","class":"recording","tooltip":"Handy is listening"}\n'
+else
+  printf '{"text":"","class":"idle"}\n'
+fi

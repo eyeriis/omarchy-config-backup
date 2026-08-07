@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Uninstall  DVD Flick
+Exec=env "WINEPREFIX=/home/eyeriis/.wine" wine "C:\\\\ProgramData\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\DVD Flick\\\\Uninstall  DVD Flick.lnk"
+Type=Application
+StartupNotify=true
+Comment=Uninstall  DVD Flick
+Path=/home/eyeriis/.wine/drive_c/Program Files (x86)/DVD Flick
+Icon=F6A8_unins000.0
+StartupWMClass=unins000.exe

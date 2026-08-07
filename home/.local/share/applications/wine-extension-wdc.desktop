@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Wondershare DVD Creator
+MimeType=application/x-wine-extension-wdc;
+Exec=env "WINEPREFIX=/home/eyeriis/.wine" wine start /ProgIDOpen "WDCFile" %f
+NoDisplay=true
+StartupNotify=true
+Icon=5C74_DVDCreator.0

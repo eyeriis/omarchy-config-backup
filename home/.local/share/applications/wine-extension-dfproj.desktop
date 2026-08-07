@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=DVD Flick
+MimeType=application/x-wine-extension-dfproj;
+Exec=env "WINEPREFIX=/home/eyeriis/.wine" wine start /ProgIDOpen "DVDFlick" %f
+NoDisplay=true
+StartupNotify=true
+Icon=22A8_dvdflick.0

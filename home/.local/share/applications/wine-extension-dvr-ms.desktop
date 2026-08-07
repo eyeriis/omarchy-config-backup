@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=FormatPlayer
+MimeType=application/x-wine-extension-dvr-ms;
+Exec=env "WINEPREFIX=/home/eyeriis/.wine" wine start /ProgIDOpen "FormatPlayer.dvr-ms" %f
+NoDisplay=true
+StartupNotify=true
+Icon=3FA5_FormatPlayer.0
